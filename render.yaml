@@ -1,0 +1,31 @@
+# Render Blueprint: New > Blueprint in the Render dashboard reads this file.
+# Values marked "sync: false" are asked for when you create the service (they're secrets).
+services:
+  - type: web
+    name: kagaz-shop
+    runtime: docker
+    plan: free
+    region: singapore
+    envVars:
+      - key: DB_HOST            # e.g. gateway01.ap-southeast-1.prod.aws.tidbcloud.com
+        sync: false
+      - key: DB_PORT
+        value: "4000"
+      - key: DB_NAME
+        value: kagaz            # created automatically on first visit
+      - key: DB_USER            # e.g. 2aBcDeFgH.root
+        sync: false
+      - key: DB_PASS
+        sync: false
+      - key: DB_SSL_CA          # system CA bundle inside the Docker image, turns on TLS
+        value: /etc/ssl/certs/ca-certificates.crt
+      - key: ADMIN_PASSWORD     # private password for admin@example.com
+        sync: false
+      - key: CUSTOMER_PASSWORD  # private password for customer@example.com
+        sync: false
+      - key: PAYPAL_CLIENT_ID
+        sync: false
+      - key: PAYPAL_SECRET
+        sync: false
+      - key: INR_PER_USD
+        value: "88"

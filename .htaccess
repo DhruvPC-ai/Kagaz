@@ -1,0 +1,7 @@
+# No directory listings
+Options -Indexes
+
+# Keep project files that aren't web pages private
+<FilesMatch "(\.(sql|md|yaml|yml)|^Dockerfile|^\.dockerignore|^\.gitignore)$">
+    Require all denied
+</FilesMatch>
